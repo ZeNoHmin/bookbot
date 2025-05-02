@@ -1,5 +1,5 @@
-def get_book_text(filepath):
-    with open(filepath) as f:
+def get_book_text(path):
+    with open(path) as f:
         file_contents = f.read()
     return file_contents
 
@@ -10,9 +10,9 @@ def get_number_words(text):
     return num
 
 
-def get_number_char(filepath):
+def get_number_char(path):
     count = {}
-    with open(filepath) as f:
+    with open(path) as f:
         file_contents = f.read()
         low = file_contents.lower()
         for char in low:
@@ -22,14 +22,16 @@ def get_number_char(filepath):
                 count[char] = 1
     return count
 
+
 def sort_on(final):
     return final["num"]
 
-def listing(filepath):
-    count = get_number_char(filepath)
+
+def listing(path):
+    count = get_number_char(path)
     final = []
     for c in count:
         if c.isalpha():
-        	final.append({"char" :c, "num" :count[c]})
+            final.append({"char": c, "num": count[c]})
     final.sort(reverse=True, key=sort_on)
     return final
